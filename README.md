@@ -81,7 +81,7 @@ def SimpleHillClimbing():
             best = new_solution
             best_score = score
         ```
-        <hr>
+<hr>
 
 <h2>Sample Input and Output</h2>
 
