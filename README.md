@@ -39,6 +39,50 @@ Feedback is provided in terms of heuristic function
 <p> Lopp Step -2 and Step-3  until we achieve the score to be Zero to achieve Global Minima.</p>
 
 <hr>
+<hr>
+<h3>PROGRAM<h3>
+ ```
+ import random
+import string
+
+def generate_random_solution(answer):
+    # find the length of answer and store it in l
+    l = len(answer)
+    return [random.choice(string.printable) for _ in range(l)]
+
+def evaluate(solution, answer):
+    print(solution)
+    target = list(answer)
+    diff = 0
+    for i in range(len(target)):
+        s = solution[i]
+        t = target[i]
+        # difference between ASCII values of characters
+        diff += abs(ord(s) - ord(t))
+    return diff
+
+def mutate_solution(solution):
+    ind = random.randint(0, len(solution) - 1)
+    solution[ind] = random.choice(string.printable)
+    return solution
+
+def SimpleHillClimbing():
+    answer = "Arti"
+    best = generate_random_solution(answer)
+    best_score = evaluate(best, answer)
+
+    while True:
+        print("Score:", best_score, " Solution:", "".join(best))
+        if best_score == 0:
+            break
+        new_solution = mutate_solution(list(best))
+        score = evaluate(new_solution, answer)
+        if score < best_score:
+            best = new_solution
+            best_score = score
+
+<hr>
+
 <h2>Sample Input and Output</h2>
 <h2>Sample String:</h2> Artificial Intelligence
 <h2>Output:</h2>
